@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="_assets/css/jqm-demos.css">
     <title>UFRB | ASCOM</title>
 </head>
-<body style="zoom: 1.7;">
+<body style="zoom: 1.7;" onload="onLoad()">
 	  <!-- Page: home  -->
   <div id="home" data-role="page">
     <div data-role="header" data-position="fixed" data-theme="b">
@@ -200,14 +200,11 @@ dois serviços podem ser disponibilizados.</p>
     <script type="text/javascript">
         app.initialize();
     </script>
-	<script type="text/javascript">
-        // start an interval timer
-		var mainloopid = setInterval(mainloop, 1000);
-		function mainloop {
-			// call the plugin every (say) one second to keep your app awake
-			window.plugins.insomnia.keepAwake();
-		}
-    </script>
+		<script> 
+		function onLoad() { document.addEventListener("deviceready", onDeviceReady, false); } 
+		// Cordova is loaded and it is now safe to make calls Cordova methods // 
+		function onDeviceReady() { window.plugins.insomnia.keepAwake() }
+		</script>
     <script src="js/jquery.js"></script>
 	<script src="js/jquery.mobile-1.4.5.min.js"></script>
 	<script src="js/Insomnia.js"></script>
